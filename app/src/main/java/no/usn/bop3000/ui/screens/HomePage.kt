@@ -4,7 +4,7 @@ import androidx.compose.foundation.layout.*
 import no.usn.bop3000.R
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
-import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -31,17 +31,15 @@ fun HomePage() {
 
         Button(
             onClick = { /* Handtering av knappetrykk */ },
-            colors = ButtonColors(
+            enabled = true,
+            colors = ButtonDefaults.buttonColors(
                 containerColor = MaterialTheme.colorScheme.primary,
-                contentColor = MaterialTheme.colorScheme.onPrimary,
-                disabledContainerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.3f), // Bakgrunnsfarge når deaktivert
-                disabledContentColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.3f) // Tekstfarge når deaktivert
+                contentColor = MaterialTheme.colorScheme.onPrimary
             )
         ) {
-            Text(
-                text = stringResource(id = R.string.klikk_her)
-            )
+            Text("Trykk her")
         }
+
     }
 }
 
