@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.res.stringResource
 
@@ -20,27 +21,27 @@ fun HomePage() {
             .fillMaxSize()
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Top
     ) {
         Text(
             text = stringResource(id = R.string.welcome_message),
             style = MaterialTheme.typography.headlineLarge
         )
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(45.dp))
 
         Button(
             onClick = { /* Handtering av knappetrykk */ },
-            enabled = true,
-            colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.colorScheme.primary,
-                contentColor = MaterialTheme.colorScheme.onPrimary
-            )
+            modifier = Modifier.size(150.dp, 50.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
         ) {
-            Text("Trykk her")
+            Text(
+                text = stringResource(id = R.string.klikk_her),
+                fontSize = 18.sp
+            )
         }
-
     }
+
 }
 
 @Preview
