@@ -1,6 +1,13 @@
 
 <resources>
     <string name="app_name">BOP3000</string>
-    <string name="welcome_message">Velkommen til appen!</string>
-    <string name="klikk_her">Klikk her</string>
+    <string name="headliner">KULTURMINNER</string>
+    <string name="welcome">Velkommen!</string>
+    <string name="intro_text">
+        Opplev historien langs Kulturstien fra Bø Museum til Folkestadbrua.
+        Appen fungerer som din personlige turguide og gir deg informasjon om
+        kulturminner underveis med fortellerstemme, bilder og videoer.
+        La historien komme til live mens du utforsker stien!
+    </string>
+    <string name="start_tur">Start tur</string>
 </resources>
