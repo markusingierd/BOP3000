@@ -143,7 +143,7 @@ fun ImageSlider() {
 
     LaunchedEffect(Unit) {
         while (true) {
-            delay(3000)
+            delay(4000)
             currentImageIndex.intValue = (currentImageIndex.intValue + 1) % images.size
         }
     }
