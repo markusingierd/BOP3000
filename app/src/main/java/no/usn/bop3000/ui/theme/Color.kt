@@ -2,17 +2,18 @@ package no.usn.bop3000.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val DefaultBackground = Color(0xFFFFFBF3)
-val NavbarBackground = Color(0xFFA67F5A)
-val NavbarButtonSelected = Color(0xFF7F563B)
-val DefaultButton = Color(0XFFC0A080)
-val DefaultListItemBackground = Color(0xFFDAB892)
+val DefaultBackground = Color(0xFFFFFFFF)
+val NavbarBackground = Color(0xFF1E1E2E)
+val NavbarButtonSelected = Color(0xFF4A4A8A)
+val DefaultButton = Color(0xFF5678A0)
+val DefaultListItemBackground = Color(0xFF2A2A3D)
 val ProfileUserBackground = Color(0xFF000000)
-val ProfileUserStatisticsBackground = Color(0xFFEFEBE9)
-val ErrorColor = Color.Red
-val ProfileBanner = Color(0xFFA1887F)
-val ProfileScoreboard = Color(0xFFEFEBE9)
-val OnProfileBanner = Color.Black
+val ProfileUserStatisticsBackground = Color(0xFF222831)
+val ErrorColor = Color(0xFFD32F2F)
+val ProfileBanner = Color(0xFF37474F)
+val ProfileScoreboard = Color(0xFF263238)
+val OnProfileBanner = Color(0xFFFFFFFF)
+
 
 val DarkDefaultBackground = Color(0xFF3C3C3E)
 val DarkNavbarBackground = Color(0xFF2C2C2E)
