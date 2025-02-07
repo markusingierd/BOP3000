@@ -27,7 +27,7 @@ import kotlinx.coroutines.delay
 import androidx.compose.foundation.layout.Box
 
 @Composable
-fun HomePage() {
+fun HomeScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -163,6 +163,6 @@ fun ImageSlider() {
 
 @Preview
 @Composable
-fun PreviewHomePage() {
-    HomePage()
+fun PreviewHomeScreen() {
+    HomeScreen()
 }
