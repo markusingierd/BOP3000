@@ -45,6 +45,7 @@ dependencies {
     implementation("com.mapbox.extension:maps-compose:11.9.2")
     implementation("androidx.annotation:annotation:1.0.0")
     implementation("com.google.android.gms:play-services-location:21.3.0")
+    implementation("androidx.navigation:navigation-compose:2.7.5")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

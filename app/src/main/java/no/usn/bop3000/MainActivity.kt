@@ -1,30 +1,34 @@
 package no.usn.bop3000
 
-
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.ui.Modifier
-import com.mapbox.geojson.Point
-import com.mapbox.maps.extension.compose.MapboxMap
-import com.mapbox.maps.extension.compose.animation.viewport.rememberMapViewportState
+import androidx.compose.runtime.Composable
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import no.usn.bop3000.ui.screens.HomeScreen
+import no.usn.bop3000.ui.screens.TrailScreen
+import no.usn.bop3000.ui.theme.BopTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MapboxMap(
-                Modifier.fillMaxSize(),
-                mapViewportState = rememberMapViewportState {
-                    setCameraOptions {
-                        zoom(2.0)
-                        center(Point.fromLngLat(-98.0, 39.5))
-                        pitch(0.0)
-                        bearing(0.0)
+            val navController = rememberNavController()
+            BopTheme {
+                NavHost(
+                    navController = navController,
+                    startDestination = "home"
+                ) {
+                    composable("home") {
+                        HomeScreen(navController)
                     }
-                },
-            )
+                    composable("trail") {
+                        TrailScreen()
+                    }
+                }
+            }
         }
     }
 }
