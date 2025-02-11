@@ -132,12 +132,12 @@ fun ImageSlider() {
         painterResource(id = R.drawable.slider3)
     )
 
-    val currentImageIndex = remember { mutableStateOf(0) }
+    val currentImageIndex = remember { mutableIntStateOf(0) }
 
     LaunchedEffect(Unit) {
         while (true) {
             delay(4000)
-            currentImageIndex.value = (currentImageIndex.value + 1) % images.size
+            currentImageIndex.intValue = (currentImageIndex.intValue + 1) % images.size
         }
     }
 
@@ -147,7 +147,7 @@ fun ImageSlider() {
             .height(250.dp)
     ) {
         Image(
-            painter = images[currentImageIndex.value],
+            painter = images[currentImageIndex.intValue],
             contentDescription = "Slideshow Image",
             modifier = Modifier.fillMaxWidth()
         )
