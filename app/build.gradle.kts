@@ -41,6 +41,11 @@ android {
 
 dependencies {
 
+    implementation(libs.mapbox)
+    implementation(libs.maps.compose)
+    implementation(libs.androidx.annotation)
+    implementation(libs.play.services.location)
+    implementation(libs.navigation.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
