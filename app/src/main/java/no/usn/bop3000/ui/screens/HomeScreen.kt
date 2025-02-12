@@ -103,7 +103,7 @@ fun HomeScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(24.dp))
 
             Button(
-                onClick = { navController.navigate("trail") }, // Navigerer til TrailScreen
+                onClick = { navController.navigate("trail") },
                 enabled = true,
                 colors = ButtonDefaults.buttonColors(
                     containerColor = MaterialTheme.colorScheme.primary,
@@ -157,6 +157,6 @@ fun ImageSlider() {
 @Preview
 @Composable
 fun PreviewHomeScreen() {
-    val navController = rememberNavController() // Fiktiv NavController for forhåndsvisning
-    HomeScreen(navController = navController) // Passer navController
+    val navController = rememberNavController()
+    HomeScreen(navController = navController)
 }
