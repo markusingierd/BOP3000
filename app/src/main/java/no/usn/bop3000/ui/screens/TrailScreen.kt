@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
@@ -46,30 +45,31 @@ fun TrailScreen(viewModel: LocationViewModel = viewModel()) {
     Box(modifier = Modifier.fillMaxSize()) {
         Box(
             modifier = Modifier
-                .height(500.dp)
-                .width(350.dp)
+                .size(300.dp)  // Kartet er en boks på 300dp x 300dp
                 .align(Alignment.Center)
         ) {
             AndroidView(factory = { context ->
                 MapView(context).apply {
-                    mapboxMap.loadStyle(Style.MAPBOX_STREETS) {
+                    mapboxMap.loadStyle(Style.MAPBOX_STREETS) { _ ->
+                        // Aktiver brukerposisjon (blå indikator)
                         val locationPlugin = location
                         locationPlugin.updateSettings {
                             enabled = true
                             pulsingEnabled = true
                         }
-
-                        locationState?.let { location ->
-                            mapboxMap.setCamera(
-                                CameraOptions.Builder()
-                                    .center(Point.fromLngLat(location.longitude, location.latitude))
-                                    .zoom(12.0)
-                                    .build()
-                            )
-                        }
                     }
                 }
+            }, update = { mapView ->
+                locationState?.let { location ->
+                    mapView.mapboxMap.setCamera(
+                        CameraOptions.Builder()
+                            .center(Point.fromLngLat(location.longitude, location.latitude))
+                            .zoom(15.0)
+                            .build()
+                    )
+                }
             })
+
         }
     }
 }
