@@ -41,6 +41,7 @@ android {
 
 dependencies {
 
+    implementation(libs.coil)
     implementation(libs.mapbox)
     implementation(libs.maps.compose)
     implementation(libs.androidx.annotation)
