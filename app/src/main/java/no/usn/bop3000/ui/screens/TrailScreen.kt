@@ -49,9 +49,9 @@ fun TrailScreen(viewModel: LocationViewModel = viewModel()) {
     }
 
     val trailPoints = listOf(
-        Point.fromLngLat(9.063836, 59.411445), // Bø-parken
-        Point.fromLngLat(5.3243, 60.3921),  // Bergen
-        Point.fromLngLat(10.3951, 63.4305)  // Trondheim
+        Point.fromLngLat(9.063836, 59.411445),
+        Point.fromLngLat(9.064038, 59.412280),
+        Point.fromLngLat(9.065836, 59.411999)
     )
 
     Box(modifier = Modifier.fillMaxSize()) {
