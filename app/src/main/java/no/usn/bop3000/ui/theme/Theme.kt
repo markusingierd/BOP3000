@@ -7,22 +7,22 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 
 private val DarkColorScheme = darkColorScheme(
-    primary = DarkDefaultButton,
-    background = DarkDefaultBackground,
-    surface = DarkNavbarBackground,
-    onPrimary = DarkProfileUserBackground,
-    onBackground = DarkProfileUserBackground,
-    onSurface = DarkProfileUserStatisticsBackground,
+    primary = DarkButton,
+    background = DarkBackground,
+    surface = DarkInfoBox,
+    onPrimary = DarkOnButton,
+    onBackground = DarkText,
+    onSurface = DarkTextOnInfo,
     error = DarkErrorColor
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = DefaultButton,
-    background = DefaultBackground,
-    surface = NavbarBackground,
-    onPrimary = DefaultBackground,
-    onBackground = ProfileUserBackground,
-    onSurface = ProfileUserStatisticsBackground,
+    primary = Button,
+    background = Background,
+    surface = InfoBox,
+    onPrimary = OnButton,
+    onBackground = Text,
+    onSurface = TextOnInfo,
     error = ErrorColor
 )
 

@@ -71,12 +71,7 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
         }
     }
 
-    val trailPoints = listOf(
-        Point.fromLngLat(9.063836, 59.411445),
-        Point.fromLngLat(9.064038, 59.412280),
-        Point.fromLngLat(9.0611, 59.4122)
-    )
-
+    // Liste med trail-punkter og tilhørende informasjon
     val trailPointsInfo = listOf(
         PointInfo(
             point = Point.fromLngLat(9.063836, 59.411445),
@@ -123,20 +118,20 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
                             imageVector = Icons.Filled.Home,
                             contentDescription = "Home",
                             tint = MaterialTheme.colorScheme.onPrimary
-                        )                    }
+                        )
+                    }
                 },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(containerColor = MaterialTheme.colorScheme.primary)
             )
         }
-
     ) { innerPadding ->
         val mapHeight = if (currentPointInfo == null) {
-            600.dp
+            1500.dp
         } else {
-            400.dp
+            500.dp
         }
 
-        Box(
+        Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
@@ -146,7 +141,6 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
                     .fillMaxWidth()
                     .height(mapHeight)
                     .padding(16.dp)
-                    .align(Alignment.TopStart)
             ) {
                 AndroidView(factory = { context ->
                     MapView(context).apply {
@@ -157,9 +151,10 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
                                 pulsingEnabled = true
                             }
 
-                            val featureList = trailPoints.map { point ->
-                                Feature.fromGeometry(point)
+                            val featureList = trailPointsInfo.map { pointInfo ->
+                                Feature.fromGeometry(pointInfo.point)
                             }
+
                             val source = geoJsonSource("trail-source") {
                                 featureCollection(FeatureCollection.fromFeatures(featureList))
                             }
@@ -183,15 +178,13 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
                                 .build()
                         )
 
+                        // Finn nærmeste punkt
                         val nearestPoint = trailPointsInfo.find { pointInfo ->
                             isUserNearPoint(userLocation, pointInfo.point)
                         }
 
-                        if (nearestPoint != null) {
-                            currentPointInfo = nearestPoint
-                        } else {
-                            currentPointInfo = null
-                        }
+                        // Oppdater informasjon om punktet
+                        currentPointInfo = nearestPoint
                     }
                 })
             }
@@ -201,9 +194,8 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(16.dp)
-                        .align(Alignment.BottomCenter)
                         .background(
-                            color = Color.White.copy(alpha = 0.8f),
+                            color = MaterialTheme.colorScheme.surface,
                             shape = MaterialTheme.shapes.medium
                         )
                 ) {
@@ -225,7 +217,7 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
                         )
                         Spacer(modifier = Modifier.height(8.dp))
                         Image(
-                            painter = painterResource(id = pointInfo.imageResId),
+                            painter = rememberAsyncImagePainter(model = pointInfo.imageResId),
                             contentDescription = "Image at point",
                             modifier = Modifier
                                 .fillMaxWidth()
