@@ -75,20 +75,20 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
     val trailPointsInfo = listOf(
         PointInfo(
             point = Point.fromLngLat(9.063836, 59.411445),
-            title = "Punkt 1",
-            description = "Dette er beskrivelsen for punkt 1.",
+            title = stringResource(id = R.string.point_1_title),
+            description = stringResource(id = R.string.point_1_description),
             imageResId = R.drawable.gullbringimg
         ),
         PointInfo(
             point = Point.fromLngLat(9.064038, 59.412280),
-            title = "Punkt 2",
-            description = "Dette er beskrivelsen for punkt 2.",
+            title = stringResource(id = R.string.point_2_title),
+            description = stringResource(id = R.string.point_2_description),
             imageResId = R.drawable.gullbringimg
         ),
         PointInfo(
             point = Point.fromLngLat(9.0611, 59.4122),
-            title = "Punkt 3",
-            description = "Dette er beskrivelsen for punkt 3.",
+            title = stringResource(id = R.string.point_3_title),
+            description = stringResource(id = R.string.point_3_description),
             imageResId = R.drawable.gullbringimg
         )
     )

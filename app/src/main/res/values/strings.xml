@@ -1,6 +1,9 @@
 
 <resources>
+    <!--app navn -->
     <string name="app_name">BOP3000</string>
+
+    <!--forsiden -->
     <string name="headliner">KULTURMINNER</string>
     <string name="welcome">Velkommen!</string>
     <string name="intro_text">
@@ -10,4 +13,12 @@
         La historien komme til live mens du utforsker stien!
     </string>
     <string name="start_tur">Start tur</string>
+
+    <!--kart siden -->
+    <string name="point_1_title">Punkt 1</string>
+    <string name="point_1_description">Dette er beskrivelsen for punkt 1.</string>
+    <string name="point_2_title">Punkt 2</string>
+    <string name="point_2_description">Dette er beskrivelsen for punkt 2.</string>
+    <string name="point_3_title">Punkt 3</string>
+    <string name="point_3_description">Dette er beskrivelsen for punkt 3.</string>
 </resources>
