@@ -4,7 +4,6 @@
     <string name="app_name">BOP3000</string>
 
     <!--forsiden -->
-    <string name="headliner">KULTURMINNER</string>
     <string name="welcome">Velkommen!</string>
     <string name="intro_text">
         Opplev historien langs Kulturstien fra Bø Museum til Folkestadbrua.
@@ -19,6 +18,15 @@
     <string name="point_1_description">Dette er beskrivelsen for punkt 1.</string>
     <string name="point_2_title">Punkt 2</string>
     <string name="point_2_description">Dette er beskrivelsen for punkt 2.</string>
-    <string name="point_3_title">Punkt 3</string>
-    <string name="point_3_description">Dette er beskrivelsen for punkt 3.</string>
+    <string name="point_3_title">Gullbring studenthjem</string>
+    <string name="point_3_description">
+        Gullbring studenthjem, nå kjent som Campus Bø Studentboliger,
+        er et moderne studentboligkompleks i Bø i Telemark.
+        Bygget huser 282 nye studentboliger med flotte fellesrom og
+        en fantastisk beliggenhet tett på campus.SSN.NO
+        Boligene ble oppført som et massivtrebygg over fem etasjer som omkranser et atrium.
+        Det er to hovedinnganger, merket med henholdsvis 28 og 30, som reflekterer gatenumrene.
+        De første beboerne flyttet inn 7. august 2020, akkurat i tide til studiestart.
+    </string>
+    <string name="headliner">KULTURMINNER</string>
 </resources>

@@ -45,6 +45,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -71,7 +73,6 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
         }
     }
 
-    // Liste med trail-punkter og tilhørende informasjon
     val trailPointsInfo = listOf(
         PointInfo(
             point = Point.fromLngLat(9.063836, 59.411445),
@@ -117,6 +118,7 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
                         Icon(
                             imageVector = Icons.Filled.Home,
                             contentDescription = "Home",
+                            modifier = Modifier.size(32.dp),
                             tint = MaterialTheme.colorScheme.onPrimary
                         )
                     }
@@ -178,12 +180,10 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
                                 .build()
                         )
 
-                        // Finn nærmeste punkt
                         val nearestPoint = trailPointsInfo.find { pointInfo ->
                             isUserNearPoint(userLocation, pointInfo.point)
                         }
 
-                        // Oppdater informasjon om punktet
                         currentPointInfo = nearestPoint
                     }
                 })
@@ -199,37 +199,38 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
                             shape = MaterialTheme.shapes.medium
                         )
                 ) {
-                    Column(
+                    LazyColumn(
                         modifier = Modifier
-                            .padding(16.dp)
-                            .fillMaxWidth(),
+                            .fillMaxWidth()
+                            .padding(16.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        Text(
-                            text = pointInfo.title,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 18.sp
-                        )
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Text(
-                            text = pointInfo.description,
-                            fontSize = 14.sp
-                        )
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Image(
-                            painter = rememberAsyncImagePainter(model = pointInfo.imageResId),
-                            contentDescription = "Image at point",
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(200.dp)
-                                .padding(top = 8.dp)
-                        )
-                        pointInfo.videoUrl?.let {
-                            Button(
-                                onClick = { /* Open video */ },
-                                modifier = Modifier.padding(top = 8.dp)
-                            ) {
-                                Text("Se Video")
+                        item {
+                            Text(
+                                text = pointInfo.title,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 18.sp
+                            )
+                            Spacer(modifier = Modifier.height(8.dp))
+                            Text(
+                                text = pointInfo.description,
+                                fontSize = 14.sp
+                            )
+                            Spacer(modifier = Modifier.height(8.dp))
+                            Image(
+                                painter = rememberAsyncImagePainter(model = pointInfo.imageResId),
+                                contentDescription = "Image at point",
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(200.dp)
+                            )
+                            pointInfo.videoUrl?.let {
+                                Button(
+                                    onClick = { /* Open video */ },
+                                    modifier = Modifier.padding(top = 8.dp)
+                                ) {
+                                    Text("Se Video")
+                                }
                             }
                         }
                     }
