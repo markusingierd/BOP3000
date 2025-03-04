@@ -6,12 +6,14 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -38,9 +40,15 @@ import androidx.compose.ui.res.*
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.draw.shadow
 import no.usn.bop3000.R
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.ui.text.style.TextAlign
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TrailScreen(viewModel: LocationViewModel = viewModel()) {
+fun TrailScreen(navController: NavController, viewModel: LocationViewModel = viewModel()) {
     val locationState by viewModel.userLocation.collectAsState()
 
     val permissionLauncher = rememberLauncherForActivityResult(
@@ -92,99 +100,145 @@ fun TrailScreen(viewModel: LocationViewModel = viewModel()) {
 
     var currentPointInfo by remember { mutableStateOf<PointInfo?>(null) }
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        Box(
-            modifier = Modifier
-                .size(400.dp)
-                .align(Alignment.Center)
-        ) {
-            AndroidView(factory = { context ->
-                MapView(context).apply {
-                    mapboxMap.loadStyle(Style.MAPBOX_STREETS) { style ->
-                        val locationPlugin = location
-                        locationPlugin.updateSettings {
-                            enabled = true
-                            pulsingEnabled = true
-                        }
-
-                        val featureList = trailPoints.map { point ->
-                            Feature.fromGeometry(point)
-                        }
-                        val source = geoJsonSource("trail-source") {
-                            featureCollection(FeatureCollection.fromFeatures(featureList))
-                        }
-                        style.addSource(source)
-
-                        style.addLayer(
-                            circleLayer("trail-layer", "trail-source") {
-                                circleColor("#FF8C00")
-                                circleRadius(6.0)
-                                circleOpacity(0.8)
-                            }
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        Text(
+                            text = stringResource(id = R.string.headliner),
+                            style = MaterialTheme.typography.titleLarge,
+                            color = MaterialTheme.colorScheme.onPrimary
                         )
                     }
-                }
-            }, update = { mapView ->
-                locationState?.let { userLocation ->
-                    mapView.mapboxMap.setCamera(
-                        CameraOptions.Builder()
-                            .center(Point.fromLngLat(userLocation.longitude, userLocation.latitude))
-                            .zoom(15.0)
-                            .build()
-                    )
-
-                    trailPointsInfo.forEach { pointInfo ->
-                        if (isUserNearPoint(userLocation, pointInfo.point)) {
-                            currentPointInfo = pointInfo
-                        }
-                    }
-                }
-            })
+                },
+                navigationIcon = {
+                    IconButton(onClick = {
+                        navController.navigate("home")
+                    }) {
+                        Icon(
+                            imageVector = Icons.Filled.Home,
+                            contentDescription = "Home",
+                            tint = MaterialTheme.colorScheme.onPrimary
+                        )                    }
+                },
+                colors = TopAppBarDefaults.mediumTopAppBarColors(containerColor = MaterialTheme.colorScheme.primary)
+            )
         }
 
-        currentPointInfo?.let { pointInfo ->
+    ) { innerPadding ->
+        val mapHeight = if (currentPointInfo == null) {
+            600.dp
+        } else {
+            400.dp
+        }
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+        ) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .height(mapHeight)
                     .padding(16.dp)
-                    .align(Alignment.BottomCenter)
-                    .background(
-                        color = Color.White.copy(alpha = 0.8f),
-                        shape = MaterialTheme.shapes.medium
-                    )
+                    .align(Alignment.TopStart)
             ) {
-                Column(
+                AndroidView(factory = { context ->
+                    MapView(context).apply {
+                        mapboxMap.loadStyle(Style.MAPBOX_STREETS) { style ->
+                            val locationPlugin = location
+                            locationPlugin.updateSettings {
+                                enabled = true
+                                pulsingEnabled = true
+                            }
+
+                            val featureList = trailPoints.map { point ->
+                                Feature.fromGeometry(point)
+                            }
+                            val source = geoJsonSource("trail-source") {
+                                featureCollection(FeatureCollection.fromFeatures(featureList))
+                            }
+                            style.addSource(source)
+
+                            style.addLayer(
+                                circleLayer("trail-layer", "trail-source") {
+                                    circleColor("#FF8C00")
+                                    circleRadius(6.0)
+                                    circleOpacity(0.8)
+                                }
+                            )
+                        }
+                    }
+                }, update = { mapView ->
+                    locationState?.let { userLocation ->
+                        mapView.mapboxMap.setCamera(
+                            CameraOptions.Builder()
+                                .center(Point.fromLngLat(userLocation.longitude, userLocation.latitude))
+                                .zoom(15.0)
+                                .build()
+                        )
+
+                        val nearestPoint = trailPointsInfo.find { pointInfo ->
+                            isUserNearPoint(userLocation, pointInfo.point)
+                        }
+
+                        if (nearestPoint != null) {
+                            currentPointInfo = nearestPoint
+                        } else {
+                            currentPointInfo = null
+                        }
+                    }
+                })
+            }
+
+            currentPointInfo?.let { pointInfo ->
+                Box(
                     modifier = Modifier
+                        .fillMaxWidth()
                         .padding(16.dp)
-                        .fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally
+                        .align(Alignment.BottomCenter)
+                        .background(
+                            color = Color.White.copy(alpha = 0.8f),
+                            shape = MaterialTheme.shapes.medium
+                        )
                 ) {
-                    Text(
-                        text = pointInfo.title,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 18.sp
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                        text = pointInfo.description,
-                        fontSize = 14.sp
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Image(
-                        painter = painterResource(id = pointInfo.imageResId),
-                        contentDescription = "Image at point",
+                    Column(
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .height(200.dp)
-                            .padding(top = 8.dp)
-                    )
-                    pointInfo.videoUrl?.let {
-                        // Display video button if video URL is available
-                        Button(
-                            onClick = { /* Open video */ },
-                            modifier = Modifier.padding(top = 8.dp)
-                        ) {
-                            Text("Se Video")
+                            .padding(16.dp)
+                            .fillMaxWidth(),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(
+                            text = pointInfo.title,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 18.sp
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text(
+                            text = pointInfo.description,
+                            fontSize = 14.sp
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Image(
+                            painter = painterResource(id = pointInfo.imageResId),
+                            contentDescription = "Image at point",
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(200.dp)
+                                .padding(top = 8.dp)
+                        )
+                        pointInfo.videoUrl?.let {
+                            Button(
+                                onClick = { /* Open video */ },
+                                modifier = Modifier.padding(top = 8.dp)
+                            ) {
+                                Text("Se Video")
+                            }
                         }
                     }
                 }
