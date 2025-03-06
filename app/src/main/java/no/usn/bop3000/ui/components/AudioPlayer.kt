@@ -77,7 +77,7 @@ fun AudioPlayer(audioResId: Int) {
         IconButton(
             onClick = { refreshPlayback() },
             colors = IconButtonDefaults.iconButtonColors(
-                contentColor = MaterialTheme.colorScheme.onSurface // Sets color for the icon
+                contentColor = MaterialTheme.colorScheme.onSurface
             )
         ) {
             Icon(
