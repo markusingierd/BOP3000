@@ -41,6 +41,7 @@ android {
 
 dependencies {
 
+    implementation(libs.exoplayer.core)
     implementation(libs.coil)
     implementation(libs.mapbox)
     implementation(libs.maps.compose)
