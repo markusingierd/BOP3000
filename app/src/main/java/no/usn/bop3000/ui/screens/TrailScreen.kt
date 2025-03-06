@@ -214,6 +214,10 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         item {
+                            pointInfo.audioResId?.let { audioResId ->
+                                AudioPlayer(audioResId)
+                            }
+
                             Text(
                                 text = pointInfo.title,
                                 fontWeight = FontWeight.Bold,
@@ -238,10 +242,6 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
                                     .padding(16.dp),
                                 horizontalArrangement = Arrangement.SpaceEvenly
                             ) {
-                                pointInfo.audioResId?.let { audioResId ->
-                                    AudioPlayer(audioResId)  // Lydavspilling
-                                }
-
                             }
                         }
                     }

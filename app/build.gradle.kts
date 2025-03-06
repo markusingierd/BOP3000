@@ -41,6 +41,8 @@ android {
 
 dependencies {
 
+    implementation(libs.material.icons.core.extended)
+    implementation(libs.androidx.compose.material3)
     implementation(libs.exoplayer.core)
     implementation(libs.coil)
     implementation(libs.mapbox)

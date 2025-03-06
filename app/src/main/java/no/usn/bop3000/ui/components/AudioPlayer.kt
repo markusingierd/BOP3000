@@ -4,11 +4,19 @@ import android.media.MediaPlayer
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.layout.Row
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.material3.Text
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material.icons.Icons
+//import androidx.compose.material.icons.filled.Pause
+import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.filled.PlayArrow
 
 @Composable
 fun AudioPlayer(audioResId: Int) {
@@ -46,11 +54,24 @@ fun AudioPlayer(audioResId: Int) {
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Button(onClick = { togglePlayback() }) {
-            Text(text = if (isPlaying) "Pause" else "Start")
+        IconButton(onClick = { togglePlayback() }) {
+            if (isPlaying) {
+                Text(
+                    "II",
+                    style = TextStyle(
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp
+                    )
+                )
+            } else {
+                Icon(imageVector = Icons.Filled.PlayArrow, contentDescription = "Play")
+            }
         }
-        Button(onClick = { refreshPlayback() }) {
-            Text("Refresh")
+        IconButton(onClick = { refreshPlayback() }) {
+            Icon(
+                imageVector = Icons.Filled.Refresh,
+                contentDescription = "Refresh"
+            )
         }
     }
 }
