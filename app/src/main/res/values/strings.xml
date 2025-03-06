@@ -1,7 +1,7 @@
 
 <resources>
     <!--app navn -->
-    <string name="app_name">BOP3000</string>
+    <string name="app_name">Kulturminner</string>
 
     <!--forsiden -->
     <string name="welcome">Velkommen!</string>
