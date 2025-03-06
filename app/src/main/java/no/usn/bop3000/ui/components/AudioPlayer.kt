@@ -17,6 +17,8 @@ import androidx.compose.material.icons.Icons
 //import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.IconButtonDefaults
 
 @Composable
 fun AudioPlayer(audioResId: Int) {
@@ -54,20 +56,30 @@ fun AudioPlayer(audioResId: Int) {
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        IconButton(onClick = { togglePlayback() }) {
+        IconButton(
+            onClick = { togglePlayback() },
+            colors = IconButtonDefaults.iconButtonColors(
+                contentColor = MaterialTheme.colorScheme.onSurface
+            )        ) {
             if (isPlaying) {
                 Text(
                     "II",
                     style = TextStyle(
                         fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp
+                        fontSize = 20.sp,
+                        color = MaterialTheme.colorScheme.onSurface
                     )
                 )
             } else {
                 Icon(imageVector = Icons.Filled.PlayArrow, contentDescription = "Play")
             }
         }
-        IconButton(onClick = { refreshPlayback() }) {
+        IconButton(
+            onClick = { refreshPlayback() },
+            colors = IconButtonDefaults.iconButtonColors(
+                contentColor = MaterialTheme.colorScheme.onSurface // Sets color for the icon
+            )
+        ) {
             Icon(
                 imageVector = Icons.Filled.Refresh,
                 contentDescription = "Refresh"
