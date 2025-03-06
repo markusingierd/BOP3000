@@ -3,10 +3,12 @@ package no.usn.bop3000.ui.components
 import android.media.MediaPlayer
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun AudioPlayer(audioResId: Int) {
@@ -16,7 +18,7 @@ fun AudioPlayer(audioResId: Int) {
 
     DisposableEffect(Unit) {
         mediaPlayer.start()
-
+        isPlaying = true
         onDispose {
             mediaPlayer.stop()
             mediaPlayer.release()
@@ -34,16 +36,19 @@ fun AudioPlayer(audioResId: Int) {
 
     fun refreshPlayback() {
         mediaPlayer.seekTo(0)
-        if (isPlaying) {
+        if (!isPlaying) {
             mediaPlayer.start()
+            isPlaying = true
         }
     }
 
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
         Button(onClick = { togglePlayback() }) {
             Text(text = if (isPlaying) "Pause" else "Start")
         }
-
         Button(onClick = { refreshPlayback() }) {
             Text("Refresh")
         }
