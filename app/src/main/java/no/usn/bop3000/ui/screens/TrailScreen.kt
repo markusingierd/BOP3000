@@ -29,7 +29,7 @@ import com.mapbox.maps.extension.style.sources.addSource
 import com.mapbox.maps.extension.style.sources.generated.geoJsonSource
 import com.mapbox.maps.plugin.locationcomponent.location
 import no.usn.bop3000.ui.components.LocationViewModel
-import no.usn.bop3000.ui.components.PlayAudioAutomatically
+import no.usn.bop3000.ui.components.AudioPlayer
 import coil.compose.rememberAsyncImagePainter
 import no.usn.bop3000.ui.components.isUserNearPoint
 import androidx.compose.foundation.Image
@@ -97,7 +97,7 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
     )
 
     var currentPointInfo by remember { mutableStateOf<PointInfo?>(null) }
-    var isTracking by remember { mutableStateOf(false) }
+    //var isTracking by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -239,27 +239,9 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
                                 horizontalArrangement = Arrangement.SpaceEvenly
                             ) {
                                 pointInfo.audioResId?.let { audioResId ->
-                                    PlayAudioAutomatically(audioResId)  // Lydavspilling
+                                    AudioPlayer(audioResId)  // Lydavspilling
                                 }
-                                Button(onClick = {
-                                    isTracking = true
-                                    // Start tracking or some other start action
-                                }) {
-                                    Text("Start")
-                                }
-                                Button(onClick = {
-                                    isTracking = false
-                                    // Stop tracking or reset actions
-                                }) {
-                                    Text("Stop")
-                                }
-                                Button(onClick = {
-                                    // Refresh the point information
-                                    currentPointInfo = null
-                                    // Optionally reset or reload data
-                                }) {
-                                    Text("Refresh")
-                                }
+
                             }
                         }
                     }
