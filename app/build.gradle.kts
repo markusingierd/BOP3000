@@ -41,6 +41,7 @@ android {
 
 dependencies {
 
+    implementation(libs.accompanist.pager)
     implementation(libs.material.icons.core.extended)
     implementation(libs.androidx.compose.material3)
     implementation(libs.exoplayer.core)

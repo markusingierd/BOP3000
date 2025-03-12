@@ -48,6 +48,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import kotlinx.coroutines.delay
+import com.google.accompanist.pager.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -85,13 +87,13 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
             point = Point.fromLngLat(9.064038, 59.412280),
             title = stringResource(id = R.string.point_2_title),
             description = stringResource(id = R.string.point_2_description),
-            imageResId = R.drawable.gullbringimg
+            imageResId = R.drawable.banner_img
         ),
         PointInfo(
             point = Point.fromLngLat(9.0611, 59.4122),
             title = stringResource(id = R.string.point_3_title),
             description = stringResource(id = R.string.point_3_description),
-            imageResId = R.drawable.gullbringimg,
+            sliderResId = listOf(R.drawable.gullbringimg, R.drawable.gullbringto),
             audioResId = R.raw.lydfil3
         )
     )
@@ -184,7 +186,7 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
                                         userLocation.latitude
                                     )
                                 )
-                                .zoom(15.0)
+                                .zoom(15.3)
                                 .build()
                         )
 
@@ -217,32 +219,29 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
                             pointInfo.audioResId?.let { audioResId ->
                                 AudioPlayer(audioResId)
                             }
-
                             Text(
                                 text = pointInfo.title,
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 18.sp
                             )
+                            if (pointInfo.sliderResId.isNotEmpty()) {
+                                ImageSliderInfo(pointInfo.sliderResId)
+                            } else {
+                                pointInfo.imageResId?.let {
+                                    Image(
+                                        painter = rememberAsyncImagePainter(model = it),
+                                        contentDescription = "Image at point",
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .height(200.dp)
+                                    )
+                                }
+                            }
                             Spacer(modifier = Modifier.height(8.dp))
                             Text(
                                 text = pointInfo.description,
                                 fontSize = 14.sp
                             )
-                            Spacer(modifier = Modifier.height(8.dp))
-                            Image(
-                                painter = rememberAsyncImagePainter(model = pointInfo.imageResId),
-                                contentDescription = "Image at point",
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(200.dp)
-                            )
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(16.dp),
-                                horizontalArrangement = Arrangement.SpaceEvenly
-                            ) {
-                            }
                         }
                     }
                 }
@@ -251,10 +250,32 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
     }
 }
 
+@OptIn(ExperimentalPagerApi::class)
+@Composable
+fun ImageSliderInfo(sliderResId: List<Int>) {
+    val pagerState = rememberPagerState()
+
+    // Bruk HorizontalPager for å la brukeren swipe mellom bildene
+    HorizontalPager(
+        count = sliderResId.size,
+        state = pagerState,
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(250.dp)
+    ) { page ->
+        Image(
+            painter = painterResource(id = sliderResId[page]),
+            contentDescription = "Slideshow Image",
+            modifier = Modifier.fillMaxWidth()
+        )
+    }
+}
+
 data class PointInfo(
     val point: Point,
     val title: String,
     val description: String,
-    val imageResId: Int,
+    val imageResId: Int? = null,
+    val sliderResId: List<Int> = emptyList(),
     val audioResId: Int? = null
 )

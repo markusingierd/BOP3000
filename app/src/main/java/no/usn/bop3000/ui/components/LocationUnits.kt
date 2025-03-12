@@ -4,9 +4,8 @@ import com.mapbox.geojson.Point
 import android.location.Location
 
 fun isUserNearPoint(userLocation: Location, point: Point): Boolean {
-    // Beregn avstand mellom brukerens posisjon og punktet
     val distance = calculateDistance(userLocation.latitude, userLocation.longitude, point.latitude(), point.longitude())
-    return distance <= 10 // Sjekk om avstanden er mindre enn eller lik 10 meter
+    return distance <= 10
 }
 
 fun calculateDistance(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Double {
@@ -18,5 +17,5 @@ fun calculateDistance(lat1: Double, lon1: Double, lat2: Double, lon2: Double): D
     location2.latitude = lat2
     location2.longitude = lon2
 
-    return location1.distanceTo(location2).toDouble() // Konverterer Float til Double og returnerer avstand i meter
+    return location1.distanceTo(location2).toDouble()
 }
