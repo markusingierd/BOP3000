@@ -30,6 +30,7 @@ import com.mapbox.maps.extension.style.sources.generated.geoJsonSource
 import com.mapbox.maps.plugin.locationcomponent.location
 import no.usn.bop3000.ui.components.LocationViewModel
 import no.usn.bop3000.ui.components.AudioPlayer
+import no.usn.bop3000.ui.components.VideoPlayer
 import coil.compose.rememberAsyncImagePainter
 import no.usn.bop3000.ui.components.isUserNearPoint
 import androidx.compose.foundation.Image
@@ -85,10 +86,10 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
 
     val trailPointsInfo = listOf(
         PointInfo(
-            point = Point.fromLngLat(9.063836, 59.411445),
+            point = Point.fromLngLat(9.0736, 59.4457),
             title = stringResource(id = R.string.point_1_title),
             description = stringResource(id = R.string.point_1_description),
-            imageResId = R.drawable.gullbringimg
+            videoResId = R.raw.badeland
         ),
         PointInfo(
             point = Point.fromLngLat(9.0596, 59.4089),
@@ -225,26 +226,30 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         item {
-                            pointInfo.audioResId?.let { audioResId ->
-                                AudioPlayer(audioResId)
-                            }
                             Text(
                                 text = pointInfo.title,
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 22.sp
                             )
-                            if (pointInfo.sliderResId.isNotEmpty()) {
+                            Spacer(modifier = Modifier.height(8.dp))
+                            if (pointInfo.imageResId != null && pointInfo.audioResId != null) {
+                                AudioPlayer(audioResId = pointInfo.audioResId)
+                                Image(
+                                    painter = rememberAsyncImagePainter(model = pointInfo.imageResId),
+                                    contentDescription = "Image at point",
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .height(200.dp)
+                                )
+                            }
+
+                            else if (pointInfo.sliderResId.isNotEmpty() && pointInfo.audioResId != null) {
+                                AudioPlayer(audioResId = pointInfo.audioResId)
                                 ImageSliderInfo(pointInfo.sliderResId)
-                            } else {
-                                pointInfo.imageResId?.let {
-                                    Image(
-                                        painter = rememberAsyncImagePainter(model = it),
-                                        contentDescription = "Image at point",
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .height(200.dp)
-                                    )
-                                }
+                            }
+
+                            else if (pointInfo.videoResId != null) {
+                                VideoPlayer(videoResId = pointInfo.videoResId)
                             }
                             Spacer(modifier = Modifier.height(8.dp))
                             Text(
@@ -335,5 +340,6 @@ data class PointInfo(
     val description: String,
     val imageResId: Int? = null,
     val sliderResId: List<Int> = emptyList(),
-    val audioResId: Int? = null
+    val audioResId: Int? = null,
+    val videoResId: Int? = null
 )

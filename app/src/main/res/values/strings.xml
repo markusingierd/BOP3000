@@ -15,8 +15,14 @@
 
     <!--kart siden -->
     <string name="headliner">KULTURMINNER</string>
-    <string name="point_1_title">Punkt 1</string>
-    <string name="point_1_description">Dette er beskrivelsen for punkt 1.</string>
+    <string name="point_1_title">Bø Sommerland</string>
+    <string name="point_1_description">
+        Bø Sommarland ligger i Bø i Telemark og er en av
+        Norges største turistattraksjoner med om lag 150 000 besøkende årlig.
+        Parken ble åpnet i 1985, og er Norges eneste utendørs vannaktivitetspark.
+        Bø Sommarland AS eies av det spanske konsernet Parques Reunidos,
+        som også eier fornøyelsesparken Tusenfryd.
+    </string>
 
     <string name="point_2_title">USN Campus</string>
     <string name="point_2_description">
