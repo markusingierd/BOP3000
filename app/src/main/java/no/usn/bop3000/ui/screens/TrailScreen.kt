@@ -136,14 +136,15 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
                         )
                     }
                 },
-                colors = TopAppBarDefaults.mediumTopAppBarColors(containerColor = MaterialTheme.colorScheme.primary)
-            )
+                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primary
+                )            )
         }
     ) { innerPadding ->
         val mapHeight = if (currentPointInfo == null) {
             1500.dp
         } else {
-            500.dp
+            400.dp
         }
 
         Column(
@@ -264,7 +265,7 @@ fun ImageSliderInfo(sliderResId: List<Int>) {
     val pagerState = rememberPagerState()
     val coroutineScope = rememberCoroutineScope()
 
-    Box(modifier = Modifier.fillMaxWidth().height(150.dp)) {
+    Box(modifier = Modifier.fillMaxWidth().height(200.dp)) {
         HorizontalPager(
             count = sliderResId.size,
             state = pagerState,
@@ -276,7 +277,7 @@ fun ImageSliderInfo(sliderResId: List<Int>) {
                 Image(
                     painter = painterResource(id = sliderResId[page]),
                     contentDescription = "Slideshow Image",
-                    contentScale = ContentScale.Crop, // Skalerer bildet for å fylle området
+                    contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize()
                 )
             }
