@@ -94,7 +94,8 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
             point = Point.fromLngLat(9.0596, 59.4089),
             title = stringResource(id = R.string.point_2_title),
             description = stringResource(id = R.string.point_2_description),
-            imageResId = R.drawable.banner_img
+            imageResId = R.drawable.campusbo,
+            audioResId = R.raw.lydfil2
         ),
         PointInfo(
             point = Point.fromLngLat(9.0611, 59.4122),
