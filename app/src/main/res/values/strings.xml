@@ -14,10 +14,18 @@
     <string name="start_tur">Start tur</string>
 
     <!--kart siden -->
+    <string name="headliner">KULTURMINNER</string>
     <string name="point_1_title">Punkt 1</string>
     <string name="point_1_description">Dette er beskrivelsen for punkt 1.</string>
-    <string name="point_2_title">Punkt 2</string>
-    <string name="point_2_description">Dette er beskrivelsen for punkt 2.</string>
+
+    <string name="point_2_title">USN Campus</string>
+    <string name="point_2_description">
+        «I tillegg til masse fine folk, er det masse fine fjell og fin natur,
+        og jeg er veldig glad i å gå på tur. Dessuten er Bø nært Oslo, men ikke Oslo.
+        Jeg synes Oslo blir for hektisk og slitsomt, med altfor mange folk.
+        Her i Telemark er det roligere, i tillegg til at det er veldig hyggelige folk overalt.»
+    </string>
+
     <string name="point_3_title">Gullbring studenthjem</string>
     <string name="point_3_description">
         Gullbring studenthjem, nå kjent som Campus Bø Studentboliger,
@@ -28,5 +36,4 @@
         Det er to hovedinnganger, merket med henholdsvis 28 og 30, som reflekterer gatenumrene.
         De første beboerne flyttet inn 7. august 2020, akkurat i tide til studiestart.
     </string>
-    <string name="headliner">KULTURMINNER</string>
 </resources>

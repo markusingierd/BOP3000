@@ -49,7 +49,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import kotlinx.coroutines.delay
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.*
 import com.google.accompanist.pager.*
+import androidx.compose.foundation.clickable
+import kotlinx.coroutines.launch
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.foundation.shape.CircleShape
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -84,7 +91,7 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
             imageResId = R.drawable.gullbringimg
         ),
         PointInfo(
-            point = Point.fromLngLat(9.064038, 59.412280),
+            point = Point.fromLngLat(9.0596, 59.4089),
             title = stringResource(id = R.string.point_2_title),
             description = stringResource(id = R.string.point_2_description),
             imageResId = R.drawable.banner_img
@@ -222,7 +229,7 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
                             Text(
                                 text = pointInfo.title,
                                 fontWeight = FontWeight.Bold,
-                                fontSize = 18.sp
+                                fontSize = 22.sp
                             )
                             if (pointInfo.sliderResId.isNotEmpty()) {
                                 ImageSliderInfo(pointInfo.sliderResId)
@@ -240,7 +247,7 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
                             Spacer(modifier = Modifier.height(8.dp))
                             Text(
                                 text = pointInfo.description,
-                                fontSize = 14.sp
+                                fontSize = 16.sp
                             )
                         }
                     }
@@ -254,19 +261,68 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
 @Composable
 fun ImageSliderInfo(sliderResId: List<Int>) {
     val pagerState = rememberPagerState()
+    val coroutineScope = rememberCoroutineScope()
 
-    // Bruk HorizontalPager for å la brukeren swipe mellom bildene
-    HorizontalPager(
-        count = sliderResId.size,
-        state = pagerState,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(250.dp)
-    ) { page ->
-        Image(
-            painter = painterResource(id = sliderResId[page]),
-            contentDescription = "Slideshow Image",
-            modifier = Modifier.fillMaxWidth()
+    Box(modifier = Modifier.fillMaxWidth().height(150.dp)) {
+        HorizontalPager(
+            count = sliderResId.size,
+            state = pagerState,
+            modifier = Modifier.matchParentSize()
+        ) { page ->
+            Box(
+                modifier = Modifier.fillMaxSize()
+            ) {
+                Image(
+                    painter = painterResource(id = sliderResId[page]),
+                    contentDescription = "Slideshow Image",
+                    contentScale = ContentScale.Crop, // Skalerer bildet for å fylle området
+                    modifier = Modifier.fillMaxSize()
+                )
+            }
+        }
+
+        Icon(
+            imageVector = Icons.Filled.ArrowBack,
+            contentDescription = "Left",
+            modifier = Modifier
+                .align(Alignment.CenterStart)
+                .padding(start = 16.dp)
+                .size(48.dp)
+                .background(
+                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.55f),
+                    shape = CircleShape
+                )
+                .clickable {
+                    coroutineScope.launch {
+                        if (pagerState.currentPage > 0) {
+                            pagerState.animateScrollToPage(pagerState.currentPage - 1)
+                        }
+                    }
+                }
+                .padding(12.dp),
+            tint = MaterialTheme.colorScheme.onPrimary
+        )
+
+        Icon(
+            imageVector = Icons.Filled.ArrowForward,
+            contentDescription = "Right",
+            modifier = Modifier
+                .align(Alignment.CenterEnd)
+                .padding(end = 16.dp)
+                .size(48.dp)
+                .background(
+                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.55f),
+                    shape = CircleShape
+                )
+                .clickable {
+                    coroutineScope.launch {
+                        if (pagerState.currentPage < sliderResId.size - 1) {
+                            pagerState.animateScrollToPage(pagerState.currentPage + 1)
+                        }
+                    }
+                }
+                .padding(12.dp),
+            tint = MaterialTheme.colorScheme.onPrimary
         )
     }
 }
