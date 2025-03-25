@@ -119,7 +119,7 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
                         Text(
                             text = stringResource(id = R.string.headliner),
                             style = MaterialTheme.typography.titleLarge,
-                            color = MaterialTheme.colorScheme.onPrimary
+                            color = MaterialTheme.colorScheme.onSurface
                         )
                     }
                 },
@@ -131,7 +131,7 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
                             imageVector = Icons.Filled.Home,
                             contentDescription = "Home",
                             modifier = Modifier.size(32.dp),
-                            tint = MaterialTheme.colorScheme.onPrimary
+                            tint = MaterialTheme.colorScheme.onSurface
                         )
                     }
                 },
@@ -294,7 +294,7 @@ fun ImageSliderInfo(sliderResId: List<Int>) {
                 .padding(start = 16.dp)
                 .size(48.dp)
                 .background(
-                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.55f),
+                    color = MaterialTheme.colorScheme.surface.copy(alpha = 0.55f),
                     shape = CircleShape
                 )
                 .clickable {
@@ -305,7 +305,7 @@ fun ImageSliderInfo(sliderResId: List<Int>) {
                     }
                 }
                 .padding(12.dp),
-            tint = MaterialTheme.colorScheme.onPrimary
+            tint = MaterialTheme.colorScheme.onSurface
         )
 
         Icon(
@@ -316,7 +316,7 @@ fun ImageSliderInfo(sliderResId: List<Int>) {
                 .padding(end = 16.dp)
                 .size(48.dp)
                 .background(
-                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.55f),
+                    color = MaterialTheme.colorScheme.surface.copy(alpha = 0.55f),
                     shape = CircleShape
                 )
                 .clickable {
@@ -327,7 +327,7 @@ fun ImageSliderInfo(sliderResId: List<Int>) {
                     }
                 }
                 .padding(12.dp),
-            tint = MaterialTheme.colorScheme.onPrimary
+            tint = MaterialTheme.colorScheme.onSurface
         )
     }
 }
