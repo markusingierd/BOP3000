@@ -5,7 +5,7 @@ import android.location.Location
 
 fun isUserNearPoint(userLocation: Location, point: Point): Boolean {
     val distance = calculateDistance(userLocation.latitude, userLocation.longitude, point.latitude(), point.longitude())
-    return distance <= 10
+    return distance <= 30
 }
 
 fun calculateDistance(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Double {

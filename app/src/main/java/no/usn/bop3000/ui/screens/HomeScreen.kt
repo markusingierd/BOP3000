@@ -144,7 +144,6 @@ fun ImageSlider() {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(250.dp)
     ) {
         Image(
             painter = images[currentImageIndex.intValue],

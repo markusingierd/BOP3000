@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "no.usn.bop3000"
-        minSdk = 29
+        minSdk = 25
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
