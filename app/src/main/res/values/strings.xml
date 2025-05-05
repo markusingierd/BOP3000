@@ -17,29 +17,58 @@
     <string name="headliner">KULTURMINNER</string>
     <string name="point_1_title">Bø Sommerland</string>
     <string name="point_1_description">
-        Bø Sommarland ligger i Bø i Telemark og er en av
-        Norges største turistattraksjoner med om lag 150 000 besøkende årlig.
-        Parken ble åpnet i 1985, og er Norges eneste utendørs vannaktivitetspark.
-        Bø Sommarland AS eies av det spanske konsernet Parques Reunidos,
-        som også eier fornøyelsesparken Tusenfryd.
+        Bø Sommerland er en av Norges mest populære fornøyelsesparker, og et perfekt reisemål for både store og små.
+        Beliggende i vakre Bø i Telemark, byr parken på en fantastisk blanding av spennende vannattraksjoner,
+        berg-og-dal-baner, og morsomme aktiviteter for hele familien.
+        Sommerlandet har noe for alle, fra rolige og avslappende båtturer i solfylte bassenger
+        til adrenalinpumpende opplevelser som de raskeste vannskliene og den imponerende "Hurricane" berg-og-dal-banen.
+        For de yngste gjestene finnes det trygge og fargerike lekeområder,
+        med både barnevennlige karuseller og aktiviteter som vekker magiske minner.
+        Parken er kjent for sitt familievennlige miljø, der både barn og voksne kan kose seg sammen,
+        skape minner og ha det gøy i naturskjønne omgivelser. For den som ønsker en pause fra aktivitetene,
+        finnes det flere koselige steder å sette seg ned, nyte god mat, eller slappe av i parken.
+        I tillegg til de spennende attraksjonene, er Bø Sommerland en flott plass å oppleve den fantastiske Telemark-naturen
+        på nært hold. Fra grønne skoger til glitrende vann, får du virkelig følelsen av å være ett med naturen mens du koser deg med parken.
+        Sommerlandet er åpent i sommermånedene, og tiltrekker seg årlig tusenvis av besøkende som ønsker å oppleve magiske sommerdager.
+        Enten du er ute etter fart og spenning, eller ønsker en rolig og hyggelig dag med familien,
+        er Bø Sommerland et sted du sent vil glemme.
     </string>
 
-    <string name="point_2_title">USN Campus</string>
+    <string name="point_2_title">USN Campus BØ</string>
     <string name="point_2_description">
-        «I tillegg til masse fine folk, er det masse fine fjell og fin natur,
-        og jeg er veldig glad i å gå på tur. Dessuten er Bø nært Oslo, men ikke Oslo.
-        Jeg synes Oslo blir for hektisk og slitsomt, med altfor mange folk.
-        Her i Telemark er det roligere, i tillegg til at det er veldig hyggelige folk overalt.»
+        USN Campus Bø er en del av Universitetet i Sørøst-Norge og
+        ligger idyllisk til midt i det vakre Telemark, omringet av fjell, skog og innsjøer.
+        Campusen er kjent for sitt sterke studentmiljø, flotte fasiliteter og nærheten til naturen
+        – noe som gjør den til et populært valg blant studenter fra hele landet.
+        Ved Campus Bø tilbys studier innenfor blant annet idrett, friluftsliv,
+        økonomi, ledelse, natur- og miljøfag, lærerutdanning og kultur.
+        Her kombineres faglig kvalitet med praktiske erfaringer og personlig utvikling.
+        Mange studenter fremhever nærheten mellom forelesere og studenter som en viktig grunn til at de trives så godt.
+        Campusområdet er moderne og oversiktlig, med alt du trenger i gangavstand
+        – fra lesesaler og laboratorier til treningssenter, studentkro og kantine.
+        I tillegg ligger studentboligene rett ved campus, noe som gir en behagelig og effektiv studiehverdag.
+        Bø har også et rikt kulturliv og er kjent for arrangementer som Bø Sommarland,
+        Bø Jazzklubb og ulike festivaler. Samtidig er det bare en to timers togtur til Oslo,
+        som gjør det enkelt å kombinere studieliv i rolige omgivelser med storbyens muligheter.
+        USN Campus Bø er med andre ord et perfekt valg for deg som ønsker faglig utvikling,
+        aktive omgivelser og en god balanse mellom studie og fritid.
     </string>
 
     <string name="point_3_title">Gullbring studenthjem</string>
     <string name="point_3_description">
         Gullbring studenthjem, nå kjent som Campus Bø Studentboliger,
-        er et moderne studentboligkompleks i Bø i Telemark.
-        Bygget huser 282 nye studentboliger med flotte fellesrom og
-        en fantastisk beliggenhet tett på campus.SSN.NO
-        Boligene ble oppført som et massivtrebygg over fem etasjer som omkranser et atrium.
-        Det er to hovedinnganger, merket med henholdsvis 28 og 30, som reflekterer gatenumrene.
-        De første beboerne flyttet inn 7. august 2020, akkurat i tide til studiestart.
+        er et moderne og miljøvennlig boligkompleks for studenter ved Universitetet i Sørøst-Norge, campus Bø.
+        Beliggende kun få minutter fra campus og sentrum, tilbyr boligene en perfekt
+        kombinasjon av nærhet til studier,natur og sosiale møteplasser.
+        Bygget stod ferdig i 2020 og rommer hele 282 nye studentboliger, fordelt over fem etasjer bygget i massivtre.
+        Boligene er lyse og moderne, med gode løsninger både for enkeltpersoner og for dem som ønsker å bo sammen med andre.
+        Fellesarealene er romslige og innbyr til både sosialt samvær og trivsel.
+        Arkitekturen er utformet rundt et stort atrium som slipper inn mye naturlig lys,
+        og som skaper et åpent og inkluderende bomiljø. Det er to hovedinnganger til bygget, merket med nummer 28 og 30,
+        som reflekterer beliggenheten i Gullbringvegen.
+        Gullbring studenthjem driftes av Studentsamskipnaden i Sørøst-Norge (SSN), som legger stor vekt på gode bokvaliteter,
+        miljøvennlige løsninger og høy trivsel. Her bor du i hjertet av Bø – med kort vei til forelesninger, treningssenter,
+        butikker, kaféer og naturopplevelser. Gullbring studenthjem er mer enn bare et sted å bo – det er starten på et nytt
+        kapittel i et levende og inkluderende studentmiljø.
     </string>
 </resources>

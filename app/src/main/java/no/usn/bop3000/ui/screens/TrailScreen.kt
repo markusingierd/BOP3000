@@ -94,14 +94,14 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
             title = stringResource(id = R.string.point_2_title),
             description = stringResource(id = R.string.point_2_description),
             imageResId = R.drawable.campusbo,
-            audioResId = R.raw.lydfil2
+            audioResId = R.raw.usn_campus
         ),
         PointInfo(
             point = Point.fromLngLat(9.0611, 59.4122),
             title = stringResource(id = R.string.point_3_title),
             description = stringResource(id = R.string.point_3_description),
             sliderResId = listOf(R.drawable.gullbringimg, R.drawable.gullbringto),
-            audioResId = R.raw.lydfil3
+            audioResId = R.raw.gullbring
         )
     )
 
