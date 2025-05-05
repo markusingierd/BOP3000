@@ -136,7 +136,7 @@ fun ImageSlider() {
 
     LaunchedEffect(Unit) {
         while (true) {
-            delay(4000)
+            delay(3000)
             currentImageIndex.intValue = (currentImageIndex.intValue + 1) % images.size
         }
     }
@@ -144,7 +144,6 @@ fun ImageSlider() {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(250.dp)
     ) {
         Image(
             painter = images[currentImageIndex.intValue],

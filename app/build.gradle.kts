@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "no.usn.bop3000"
-        minSdk = 29
+        minSdk = 25
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -41,6 +41,11 @@ android {
 
 dependencies {
 
+    implementation(libs.accompanist.pager)
+    implementation(libs.material.icons.core.extended)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.exoplayer.core)
+    implementation(libs.coil)
     implementation(libs.mapbox)
     implementation(libs.maps.compose)
     implementation(libs.androidx.annotation)

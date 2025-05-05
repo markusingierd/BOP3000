@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
                         HomeScreen(navController)
                     }
                     composable("trail") {
-                        TrailScreen()
+                        TrailScreen(navController)
                     }
                 }
             }

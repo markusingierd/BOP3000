@@ -7,43 +7,25 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 
 private val DarkColorScheme = darkColorScheme(
-    primary = DarkDefaultButton,
-    secondary = DarkNavbarButtonSelected,
-    background = DarkDefaultBackground,
-    surface = DarkNavbarBackground,
-    onPrimary = DarkProfileUserBackground,
-    onSecondary = DarkDefaultListItemBackground,
-    onBackground = DarkProfileUserBackground,
-    onSurface = DarkProfileUserStatisticsBackground,
-    error = DarkErrorColor,
-    tertiary = DarkProfileBanner,
-    onTertiary = DarkOnProfileBanner,
-    scrim = DarkProfileScoreboard
+    primary = DarkButton,
+    background = DarkBackground,
+    surface = DarkInfoBox,
+    onPrimary = DarkOnButton,
+    onBackground = DarkText,
+    onSurface = DarkTextOnInfo,
+    error = DarkErrorColor
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = DefaultButton,
-    secondary = NavbarButtonSelected,
-    background = DefaultBackground,
-    surface = NavbarBackground,
-    onPrimary = DefaultBackground,
-    onSecondary = DefaultListItemBackground,
-    onBackground = ProfileUserBackground,
-    onSurface = ProfileUserStatisticsBackground,
-    error = ErrorColor,
-    tertiary = ProfileBanner,
-    onTertiary = OnProfileBanner,
-    scrim = ProfileScoreboard
+    primary = Button,
+    background = Background,
+    surface = InfoBox,
+    onPrimary = OnButton,
+    onBackground = Text,
+    onSurface = TextOnInfo,
+    error = ErrorColor
 )
 
-/**
- * Function that provides a customizable theme for the app, allowing switching between light and dark modes.
- *
- * @param darkTheme Boolean flag indicating if dark theme should be used.
- * @param content Composable content that should be wrapped with the theme.
- * @author markusingierd
- * @created 2024-10-12
- */
 @Composable
 fun BopTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
