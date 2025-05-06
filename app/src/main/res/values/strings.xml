@@ -15,23 +15,17 @@
 
     <!--kart siden -->
     <string name="headliner">KULTURMINNER</string>
-    <string name="point_1_title">Bø Sommerland</string>
+    <string name="point_1_title">Gullbring Kulturhus</string>
     <string name="point_1_description">
-        Bø Sommerland er en av Norges mest populære fornøyelsesparker, og et perfekt reisemål for både store og små.
-        Beliggende i vakre Bø i Telemark, byr parken på en fantastisk blanding av spennende vannattraksjoner,
-        berg-og-dal-baner, og morsomme aktiviteter for hele familien.
-        Sommerlandet har noe for alle, fra rolige og avslappende båtturer i solfylte bassenger
-        til adrenalinpumpende opplevelser som de raskeste vannskliene og den imponerende "Hurricane" berg-og-dal-banen.
-        For de yngste gjestene finnes det trygge og fargerike lekeområder,
-        med både barnevennlige karuseller og aktiviteter som vekker magiske minner.
-        Parken er kjent for sitt familievennlige miljø, der både barn og voksne kan kose seg sammen,
-        skape minner og ha det gøy i naturskjønne omgivelser. For den som ønsker en pause fra aktivitetene,
-        finnes det flere koselige steder å sette seg ned, nyte god mat, eller slappe av i parken.
-        I tillegg til de spennende attraksjonene, er Bø Sommerland en flott plass å oppleve den fantastiske Telemark-naturen
-        på nært hold. Fra grønne skoger til glitrende vann, får du virkelig følelsen av å være ett med naturen mens du koser deg med parken.
-        Sommerlandet er åpent i sommermånedene, og tiltrekker seg årlig tusenvis av besøkende som ønsker å oppleve magiske sommerdager.
-        Enten du er ute etter fart og spenning, eller ønsker en rolig og hyggelig dag med familien,
-        er Bø Sommerland et sted du sent vil glemme.
+       Gullbring Kulturanlegg, ofte kalt Gullbring Kulturhus,
+        er et viktig samlingspunkt for kultur og idrett i Bø i Midt-Telemark kommune.
+        Anlegget ble åpnet i 1994 og har siden den gang fungert som en regional møteplass for kunst,
+        kultur og fritidsaktiviteter. Kulturhuset ligger sentralt plassert i Bø
+        og er tett knyttet til både lokalsamfunnet og Universitetet i Sørøst-Norge, campus Bø.
+        Gullbring rommer blant annet en kino, teatersal, kunstgalleri, treningssenter,
+        svømmebasseng og idrettshall. Dette gjør bygget til en allsidig arena hvor både profesjonelle aktører
+        og amatører får vist seg frem. Kulturprogrammet består av konserter, teaterforestillinger, foredrag,
+        filmvisninger og festivaler, og det tilrettelegges for både barn, unge og voksne.
     </string>
 
     <string name="point_2_title">USN Campus BØ</string>
@@ -54,8 +48,19 @@
         aktive omgivelser og en god balanse mellom studie og fritid.
     </string>
 
-    <string name="point_3_title">Gullbring studenthjem</string>
+    <string name="point_3_title">Bø Hotel</string>
     <string name="point_3_description">
+        Bø Hotel ligger sentralt i Bø i Midt-Telemark og er et populært overnattingssted for både turister,
+        kurs- og konferansedeltakere. Hotellet har en lang historie i regionen og er kjent for sin gjestfrihet,
+        flotte utsikt mot Lifjell og sin nærhet til attraksjoner som Bø Sommarland og Telemarkskanalen.
+        Hotellet tilbyr komfortable rom, egen restaurant, selskapslokaler og møtefasiliteter,
+        noe som gjør det godt egnet for både private og forretningsreisende.
+        I sommerhalvåret er det spesielt populært blant barnefamilier som ønsker kort vei til Sommarland,
+        mens høst og vinter trekker fjell og naturopplevelser tilreisende til området.
+    </string>
+
+    <string name="point_4_title">Gullbring studenthjem</string>
+    <string name="point_4_description">
         Gullbring studenthjem, nå kjent som Campus Bø Studentboliger,
         er et moderne og miljøvennlig boligkompleks for studenter ved Universitetet i Sørøst-Norge, campus Bø.
         Beliggende kun få minutter fra campus og sentrum, tilbyr boligene en perfekt

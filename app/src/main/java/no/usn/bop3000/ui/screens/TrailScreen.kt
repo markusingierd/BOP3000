@@ -84,10 +84,11 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
 
     val trailPointsInfo = listOf(
         PointInfo(
-            point = Point.fromLngLat(9.0736, 59.4457),
+            point = Point.fromLngLat(9.061171, 59.410259),
             title = stringResource(id = R.string.point_1_title),
             description = stringResource(id = R.string.point_1_description),
-            videoResId = R.raw.badeland
+            //videoResId = R.raw.gullbring_kulturhus,
+            audioResId = R.raw.gullbring_kulturhus_aud
         ),
         PointInfo(
             point = Point.fromLngLat(9.0596, 59.4089),
@@ -97,9 +98,16 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
             audioResId = R.raw.usn_campus
         ),
         PointInfo(
-            point = Point.fromLngLat(9.0611, 59.4122),
+            point = Point.fromLngLat(9.060338, 59.411202),
             title = stringResource(id = R.string.point_3_title),
             description = stringResource(id = R.string.point_3_description),
+            sliderResId = listOf(R.drawable.bo_hotell_1, R.drawable.bo_hotell_2,R.drawable.bo_hotell_3,R.drawable.bo_hotell_4),
+            audioResId = R.raw.bo_hotel
+        ),
+        PointInfo(
+            point = Point.fromLngLat(9.0611, 59.4122),
+            title = stringResource(id = R.string.point_4_title),
+            description = stringResource(id = R.string.point_4_description),
             sliderResId = listOf(R.drawable.gullbringimg, R.drawable.gullbringto),
             audioResId = R.raw.gullbring
         )
@@ -246,9 +254,11 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
                                 ImageSliderInfo(pointInfo.sliderResId)
                             }
 
-                            else if (pointInfo.videoResId != null) {
+                            else if (pointInfo.videoResId != null && pointInfo.audioResId != null) {
+                                AudioPlayer(audioResId = pointInfo.audioResId)
                                 VideoPlayer(videoResId = pointInfo.videoResId)
                             }
+
                             Spacer(modifier = Modifier.height(8.dp))
                             Text(
                                 text = pointInfo.description,
