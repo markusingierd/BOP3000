@@ -91,7 +91,7 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
             audioResId = R.raw.gullbring_kulturhus_aud
         ),
         PointInfo(
-            point = Point.fromLngLat(9.0596, 59.4089),
+            point = Point.fromLngLat(9.059962, 59.409273),
             title = stringResource(id = R.string.point_2_title),
             description = stringResource(id = R.string.point_2_description),
             imageResId = R.drawable.campusbo,
