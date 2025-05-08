@@ -98,7 +98,7 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
             audioResId = R.raw.usn_campus
         ),
         PointInfo(
-            point = Point.fromLngLat(9.061644, 59.411564),
+            point = Point.fromLngLat(9.061380, 59.411515),
             title = stringResource(id = R.string.point_3_title),
             description = stringResource(id = R.string.point_3_description),
             sliderResId = listOf(R.drawable.bo_hotell_1, R.drawable.bo_hotell_2,R.drawable.bo_hotell_3,R.drawable.bo_hotell_4),
