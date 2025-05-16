@@ -1,5 +1,3 @@
-// AudioPlayer.kt – støtte for audioResId og audioUri med stabil avspilling
-
 package no.usn.bop3000.ui.components
 
 import android.media.MediaPlayer
