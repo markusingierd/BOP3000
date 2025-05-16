@@ -10,16 +10,23 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 
 @Composable
-fun VideoPlayer(videoResId: Int) {
+fun VideoPlayer(videoResId: Int? = null, videoUri: Uri? = null) {
     val context = LocalContext.current
     val videoView = remember { VideoView(context) }
 
-    DisposableEffect(Unit) {
-        val videoUri = Uri.parse("android.resource://${context.packageName}/$videoResId")
-        videoView.setVideoURI(videoUri)
-        videoView.setOnPreparedListener {
-            it.isLooping = true
-            videoView.start()
+    DisposableEffect(videoResId, videoUri) {
+        val source: Uri? = when {
+            videoResId != null -> Uri.parse("android.resource://${context.packageName}/$videoResId")
+            videoUri != null -> videoUri
+            else -> null
+        }
+
+        source?.let {
+            videoView.setVideoURI(it)
+            videoView.setOnPreparedListener { player ->
+                player.isLooping = true
+                videoView.start()
+            }
         }
 
         onDispose {
@@ -27,10 +34,21 @@ fun VideoPlayer(videoResId: Int) {
         }
     }
 
-    AndroidView(
-        factory = { videoView },
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(200.dp)
-    )
+    if (videoResId != null || videoUri != null) {
+        AndroidView(
+            factory = { videoView },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp)
+        )
+    } else {
+        // Alternativ visning når ingen video er valgt
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp),
+        ) {
+            // Du kan legge til en placeholder eller tekst her hvis du vil
+        }
+    }
 }

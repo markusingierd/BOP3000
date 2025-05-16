@@ -41,6 +41,8 @@ android {
 
 dependencies {
 
+    implementation(libs.androidx.foundation)
+    implementation(libs.androidx.activity.ktx)
     implementation(libs.accompanist.pager)
     implementation(libs.material.icons.core.extended)
     implementation(libs.androidx.compose.material3)
