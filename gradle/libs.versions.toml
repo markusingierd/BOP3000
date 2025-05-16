@@ -18,6 +18,9 @@ exoplayer = "1.2.0"
 material3 = "1.3.0"
 accompanist-pager = "0.24.3-alpha"
 activityKtx = "1.9.0"
+firebaseBom = "33.13.0"
+firebaseFirestore = "24.7.1"
+firebaseStorage = "21.0.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -46,6 +49,9 @@ material-icons-core-extended = { group = "androidx.compose.material", name = "ma
 accompanist-pager = { group = "com.google.accompanist", name = "accompanist-pager", version.ref = "accompanist-pager" }
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }  # ← NY
 androidx-foundation = { group = "androidx.compose.foundation", name = "foundation", version = "1.8.1" }
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestore" }
+firebase-storage = { group = "com.google.firebase", name = "firebase-storage-ktx", version.ref = "firebaseStorage" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -1,5 +1,3 @@
-// AddPointScreen.kt
-
 package no.usn.bop3000.ui.screens
 
 import android.Manifest
@@ -22,7 +20,6 @@ import kotlinx.coroutines.launch
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 
-// Midlertidig punktmodell
 data class InfoPoint(
     val latitude: Double,
     val longitude: Double,
@@ -32,7 +29,6 @@ data class InfoPoint(
     val audioUri: Uri?
 )
 
-// Midlertidig lagring av punkter (kan byttes med ViewModel eller DB)
 object PointRepository {
     val points = mutableStateListOf<InfoPoint>()
 }
@@ -64,7 +60,6 @@ fun AddPointScreen() {
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
 
-    // Hent lokasjon én gang hvis ikke manuell
     LaunchedEffect(Unit) {
         if (!useManualCoordinates &&
             ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED

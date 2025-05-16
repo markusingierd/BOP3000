@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "854214022705",
+    "project_id": "bop3000-8a6b2",
+    "storage_bucket": "bop3000-8a6b2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854214022705:android:7ef482e6860c1ffb8e2710",
+        "android_client_info": {
+          "package_name": "no.usn.bop3000"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZ03Z77SAUH52xVPGl49nH0DhtpiwxWUM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
