@@ -19,13 +19,16 @@ fun AppNavHost(navController: NavHostController) {
             TrailScreen(navController)
         }
         composable("addpoint") {
-            AddPointScreen()
+            AddPointScreen(navController = navController)
         }
         composable("pincode?redirectTo={target}") { backStackEntry ->
             val redirectTo = backStackEntry.arguments?.getString("target") ?: "home"
-            PincodeScreen(onSuccess = {
-                navController.navigate(redirectTo)
-            })
+            PincodeScreen(
+                navController = navController, // ✅ legg til dette
+                onSuccess = {
+                    navController.navigate(redirectTo)
+                }
+            )
         }
     }
 }

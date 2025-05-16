@@ -7,6 +7,8 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -19,8 +21,10 @@ import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.launch
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.navigation.NavController
 
 data class InfoPoint(
+    val title: String,
     val latitude: Double,
     val longitude: Double,
     val description: String,
@@ -33,14 +37,17 @@ object PointRepository {
     val points = mutableStateListOf<InfoPoint>()
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddPointScreen() {
+fun AddPointScreen(navController: NavController) {
+
     val context = LocalContext.current
     val locationClient = remember { LocationServices.getFusedLocationProviderClient(context) }
     var useManualCoordinates by remember { mutableStateOf(false) }
     var manualLat by remember { mutableStateOf("") }
     var manualLon by remember { mutableStateOf("") }
     var coordinates by remember { mutableStateOf<Pair<Double, Double>?>(null) }
+    var title by remember { mutableStateOf("") }
     var description by remember { mutableStateOf("") }
 
     var imageUri by remember { mutableStateOf<Uri?>(null) }
@@ -70,12 +77,34 @@ fun AddPointScreen() {
         }
     }
 
-    Scaffold(snackbarHost = { SnackbarHost(snackbarHostState) }) { padding ->
-        Column(modifier = Modifier
+    Scaffold(
+        topBar = {
+            CenterAlignedTopAppBar(
+                title = {
+                    Text("Legg til punkt", style = MaterialTheme.typography.titleLarge)
+                },
+                navigationIcon = {
+                    IconButton(onClick = {
+                        navController.popBackStack()
+                    }) {
+                        Icon(
+                            imageVector = Icons.Default.ArrowBack,
+                            contentDescription = "Tilbake",
+                            tint = MaterialTheme.colorScheme.onSurface
+                        )
+                    }
+                },
+                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primary
+                )
+            )
+        },
+        snackbarHost = { SnackbarHost(snackbarHostState) }
+    ) { padding ->
+
+    Column(modifier = Modifier
             .padding(padding)
             .padding(16.dp)) {
-            Text("Legg til nytt punkt", style = MaterialTheme.typography.titleLarge)
-            Spacer(Modifier.height(8.dp))
 
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Checkbox(
@@ -106,6 +135,13 @@ fun AddPointScreen() {
                     Text("Koordinater: ${it.first}, ${it.second}")
                 } ?: Text("Henter posisjon...")
             }
+
+            OutlinedTextField(
+                value = title,
+                onValueChange = { title = it },
+                label = { Text("Overskrift") },
+                modifier = Modifier.fillMaxWidth()
+            )
 
             Spacer(Modifier.height(8.dp))
             OutlinedTextField(
@@ -151,9 +187,10 @@ fun AddPointScreen() {
                 val lon = if (useManualCoordinates) manualLon.toDoubleOrNull() else coordinates?.second
 
                 if (lat != null && lon != null) {
-                    val point = InfoPoint(lat, lon, description, imageUri, videoUri, audioUri)
+                    val point = InfoPoint(title, lat, lon, description, imageUri, videoUri, audioUri)
                     PointRepository.points.add(point)
 
+                    title = ""
                     description = ""
                     manualLat = ""
                     manualLon = ""
@@ -163,6 +200,9 @@ fun AddPointScreen() {
 
                     scope.launch {
                         snackbarHostState.showSnackbar("Punkt lagret!")
+                        navController.navigate("trail") {
+                            popUpTo("addpoint") { inclusive = true }
+                        }
                     }
                 }
             }) {

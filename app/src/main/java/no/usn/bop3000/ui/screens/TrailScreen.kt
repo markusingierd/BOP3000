@@ -113,7 +113,7 @@ fun TrailScreen(navController: NavController, viewModel: LocationViewModel = vie
     val dynamicPoints = PointRepository.points.map {
         PointInfo(
             point = Point.fromLngLat(it.longitude, it.latitude),
-            title = "Eget punkt",
+            title = it.title,
             description = it.description,
             imageUri = it.imageUri,
             audioUri = it.audioUri,
