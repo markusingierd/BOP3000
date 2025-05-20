@@ -24,7 +24,7 @@ fun AppNavHost(navController: NavHostController) {
         composable("pincode?redirectTo={target}") { backStackEntry ->
             val redirectTo = backStackEntry.arguments?.getString("target") ?: "home"
             PincodeScreen(
-                navController = navController, // ✅ legg til dette
+                navController = navController,
                 onSuccess = {
                     navController.navigate(redirectTo)
                 }

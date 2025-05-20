@@ -1,5 +1,3 @@
-// TrailScreen.kt (med støtte for egne punkter med bilde, lyd, video)
-
 package no.usn.bop3000.ui.screens
 
 import android.Manifest

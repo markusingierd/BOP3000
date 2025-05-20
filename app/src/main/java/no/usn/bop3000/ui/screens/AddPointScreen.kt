@@ -63,7 +63,6 @@ fun AddPointScreen(navController: NavController) {
     val audioPicker = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) {
         audioUri = it
     }
-
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
 

@@ -42,13 +42,11 @@ fun VideoPlayer(videoResId: Int? = null, videoUri: Uri? = null) {
                 .height(200.dp)
         )
     } else {
-        // Alternativ visning når ingen video er valgt
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(200.dp),
         ) {
-            // Du kan legge til en placeholder eller tekst her hvis du vil
         }
     }
 }
